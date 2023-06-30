@@ -18,6 +18,8 @@
     "dependencies": {
         "@vitejs/plugin-vue": "^4.2.3",
         "bootstrap-vue": "^2.23.1",
+        "laravel-echo": "^1.15.1",
+        "pusher-js": "^8.2.0",
         "vue": "^3.2.36"
     }
 }

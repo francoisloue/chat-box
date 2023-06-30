@@ -16,7 +16,9 @@ export default {
         sendMessage() {
             this.$emit('messagesent', {
                 message: this.messageText,
-                user: 'Guy'
+                user: {
+                    name: document.getElementById('navbarDropdown').innerText
+                }
             });
 
             this.messageText = "";

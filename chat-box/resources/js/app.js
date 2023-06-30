@@ -16,14 +16,30 @@ const app = createApp({
     },
     data() {
         return {
-            messages: [{message: "Yo", user: "Michel"}, {message:"Hey", user:"Gros"}]
+            messages: []
         }
     },
     methods: {
         addMessage(message) {
             this.messages.push(message);
+            axios.post('/messages', message).then(response => {
+                console.log('message sent !')
+            });
         }
     },
+    created() {
+        axios.get('/messages').then(response => {
+            this.messages = response.data
+        });
+
+        Echo.join('chatroom')
+            .here()
+            .joining()
+            .leaving()
+            .listen('MessagePosted',(e) => {
+                // Handle event
+            }),
+    }
 });
 
 app.mount("#app");
